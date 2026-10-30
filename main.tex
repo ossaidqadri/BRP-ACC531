@@ -1,0 +1,63 @@
+% Compile with LuaLaTeX + Biber (Overleaf: Menu > Compiler > LuaLaTeX).
+\documentclass[12pt,a4paper]{report}
+
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Termes}
+\setmathfont{TeX Gyre Termes Math}
+
+\usepackage[a4paper,margin=2.54cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{microtype}
+
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
+\addbibresource{references.bib}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\usepackage{booktabs,longtable,array,enumitem,caption}
+\usepackage[hidelinks]{hyperref}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\var}[1]{\mathit{#1}}
+\renewcommand{\arraystretch}{1.25}
+
+\title{Audit Quality and Earnings Management:\\
+Evidence from Textile Composite Companies\\
+Listed on the Pakistan Stock Exchange, 2020--2025}
+\date{October 2026}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  {\Large\bfseries Audit Quality and Earnings Management:\par
+  Evidence from Textile Composite Companies\par
+  Listed on the Pakistan Stock Exchange, 2020--2025\par}
+  \vspace{1.5cm}
+  {\large Chapters 1 to 3\par}
+  \vspace{1.5cm}
+  % TODO: add group member names, supervisor, department and university here.
+  {\large October 2026\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\input{chapters/ch1}
+\input{chapters/ch2}
+\input{chapters/ch3}
+
+\printbibliography[heading=bibintoc,title={References for Chapters 1 to 3}]
+
+\appendix
+\input{appendix}
+
+\end{document}

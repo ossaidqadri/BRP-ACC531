@@ -1,0 +1,186 @@
+\chapter{Research Methodology}
+
+\section{Research Design}
+
+The study is quantitative and explanatory in nature and is based on a positivist approach. It tests hypotheses relating to the relationships between the various measured variables using secondary data from audited annual reports. The data constitute a panel (the same companies are being observed over time) as we have data on up to 20 companies over a period of six fiscal years. The data are quantitative and secondary, drawn from the annual reports which are audited, and they form a panel over the six years.
+
+\section{Population and Sampling Design}
+\label{sec:sampling}
+
+The population is the 37 companies on the PSX Textile Composite sector list as at 25 October 2026 \parencite{tickeranalysts2026}. One of the entries is a preference share line (Chenab Limited (CLCPS)) which brings the total of ordinary share companies down to 36. There is some divergence in the market data providers as to the size of the sector so the list should be re-checked against the PSX on the date the data are collected.
+
+The study employs a purposive sample of the 20 largest of the 36 companies (by market cap) as listed by the provider. That ordering is in agreement with \textcite{finhisaab2026} for the top 3 companies (Interloop, Kohinoor Textile Mills and Nishat Mills). There are three reasons for this choice. First, the larger companies will have the most complete annual reports and so are more likely to have the audit fee, audit firm name and committee details available for each year. Second, 20 companies provide sufficient observations for the annual Modified Jones regressions (we need at least 10 companies per year for that). Third, 20 companies with observations over a 6 year period give us 120 observations, a workload that a group could easily collect and check by hand. The downside is that the smaller companies are under-represented and that is noted as a limitation in Section~\ref{sec:limitations}.
+
+A company will only be in the sample if it satisfies all of the following four rules.
+
+\begin{enumerate}[label=\arabic*.]
+  \item It is one of the 20 largest ordinary share companies on the sector list.
+  \item It was a PSX listed company throughout 2020--2025. Interloop went public on 5 April 2019 (prior to the study period) (SCS trade company profile). % TODO: this source is not in the reference list.
+  \item It reported for a full financial year in each year.
+  \item The audit fee, audit firm, audit committee make-up and the financial statement items required for the Modified Jones Model are all available in the relevant audited annual reports for each year, which are all publicly available.
+\end{enumerate}
+
+If a company fails a rule during data collection, it is replaced by the next company on the list, in the order given in Appendix~\ref{app:companies}, so the sample stays at 20 companies. Each replacement is recorded in Table~\ref{tab:sample}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Sample selection}
+  \label{tab:sample}
+  \small
+  \begin{tabular}{@{}p{8.5cm}rr@{}}
+    \toprule
+    Step & Companies & Observations \\
+    \midrule
+    Companies on the PSX Textile Composite list, 25 October 2026 & 37 & --- \\
+    Less: preference share line (CLCPS) & 1 & --- \\
+    Ordinary-share companies & 36 & --- \\
+    Less: companies outside the 20 largest & 16 & --- \\
+    Selected sample before data checks & 20 & 120 \\
+    Replacements made after data checks & --- & --- \\
+    Final sample & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Data Collection and Period of Study}
+
+Data were extracted directly from audited annual reports, specifically targeting the financial position statement, profit or loss account, cash flow statement, auditor remuneration note, auditor report, and statement of compliance with corporate governance codes. The compliance statement, prescribed in Annexure A of the 2019 Regulations, provides board composition details alongside audit committee membership and leadership. All corporate reports were retrieved through official PSX filings and corporate websites.
+
+The observation period encompasses six financial years spanning 2020 to 2025, aligning with the enforcement period of the 2019 Regulations. Financial metrics from 2019 were gathered solely to establish opening figures, enable comparative baseline evaluation, and furnish lagged values required for model specification.
+
+Primary metrics were systematically compiled into master data files from standardized report sections. A randomized verification check of recorded entries was conducted by a second reviewer against source filings to ensure accuracy. Audit tenure represents the duration of consecutive service by the external audit firm, calculated by tracing back historical engagement disclosures prior to 2019 where required; firms with unresolvable initial appointment dates were removed.
+
+Audit committee independence is computed by matching the committee members named in the statement of compliance with the directors that the same statement lists as independent.
+
+\section{Variable Description}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{2.4cm}p{1.7cm}p{4.4cm}p{3.6cm}p{2.0cm}@{}}
+  \caption{Variables and measurement}\label{tab:variables}\\
+  \toprule
+  Variable & Symbol & Measure & Source in the annual report & Expected sign \\
+  \midrule
+  \endfirsthead
+  \toprule
+  Variable & Symbol & Measure & Source in the annual report & Expected sign \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  Earnings management & EM & Absolute value of DA & Computed from the financial statements & Dependent \\
+  Discretionary accruals & DA & Residual from the Modified Jones Model, scaled by opening total assets & Computed from the financial statements & Dependent in robustness checks \\
+  Total accruals & TA & Net income minus operating cash flow & Profit or loss account and cash flow statement & Used in Step~1 \\
+  Audit tenure & TENURE & Consecutive years the same audit firm has served the company & Auditor's report, traced back year by year & ? \\
+  Audit fees & FEE & Natural logarithm of the disclosed audit fee, using the statutory audit fee where the note separates it & Note on auditors' remuneration & ? \\
+  Audit committee independence & ACIND & Independent directors on the audit committee divided by total audit committee members & Statement of compliance and board committee section & $-$ \\
+  Firm size & SIZE & Natural logarithm of total assets & Statement of financial position & ? \\
+  Leverage & LEV & Total liabilities divided by total assets & Statement of financial position & ? \\
+  Return on assets & ROA & Net income divided by total assets & Profit or loss account and statement of financial position & ? \\
+\end{longtable}
+\endgroup
+
+\section{Data Analysis Techniques}
+
+\subsection{Descriptive Statistics and Correlation}
+
+Each variable in Table~\ref{tab:variables} is summarised by its average, middle value, lowest value, highest value and standard deviation. A correlation matrix shows how the variables move together. Variance inflation factors check whether any variables overlap too much, and a value above 10 is treated as a warning sign.
+
+\subsection{Panel Unit Root Tests}
+
+The Levin-Lin-Chu and Im-Pesaran-Shin tests are applied to the continuous variables. They check whether a variable drifts over time instead of staying around a steady level. Each company has only six years of data, so both tests are not very strong on their own. Their results are read together with the other checks.
+
+\subsection{Panel Model Selection}
+
+Each model is estimated three ways: pooled OLS, fixed effects and random effects, with year effects in all three. The Breusch-Pagan test decides between pooled OLS and random effects. The Hausman test decides between fixed effects and random effects. If the Hausman test is significant at the 5 percent level, fixed effects are used. Otherwise random effects are used.
+
+\subsection{Diagnostic Tests}
+
+The modified Wald test checks whether the spread of errors differs across companies, and the Wooldridge test checks whether a company's errors are linked from one year to the next. Standard errors are clustered by company, so the results stay reliable even if either problem is present. Continuous variables are winsorised at the 1st and 99th percentiles, which means extreme values are pulled in to those limits so they don't distort the results.
+
+\subsection{Decision Rules for the Hypotheses}
+
+Results are judged at the 5 percent level, and the 1 percent and 10 percent levels are also reported. H1 and H2 are tested in both directions (two-tailed). H3 is tested in one direction only (one-tailed), since it expects a negative coefficient on ACIND.
+
+\subsection{Software for Analysis}
+
+Stata is used to estimate the Modified Jones Model, the panel regressions and the diagnostic tests. Its built-in commands cover the regressions, the Hausman test and the unit root tests (xtreg, hausman, xtunitroot). Two add-on commands cover the Wooldridge and modified Wald tests (xtserial, xttest3). Microsoft Excel is used to collect, code and clean the data before analysis.
+
+\section{Model Specification}
+\label{sec:model-spec}
+
+In all models, $i$ is the company and $t$ is the year, and year effects are included.
+
+\textbf{Step 1: Discretionary accruals.} Discretionary accruals are estimated with the Modified Jones Model \parencite{dechow1995}. The coefficients are estimated separately for each fiscal year across the sample companies \parencite{defond1994}. Each year is required to have at least ten companies so the estimate is stable.
+
+First, total accruals are net income minus operating cash flow:
+\begin{equation}
+  \var{TA}_{it} = \var{NI}_{it} - \var{CFO}_{it}
+\end{equation}
+
+Second, total accruals divided by opening total assets are regressed on the inverse of opening assets, the change in revenue and property, plant and equipment:
+\begin{equation}
+  \frac{\var{TA}_{it}}{A_{i,t-1}}
+  = \alpha_1\left(\frac{1}{A_{i,t-1}}\right)
+  + \alpha_2\left(\frac{\Delta\var{REV}_{it}}{A_{i,t-1}}\right)
+  + \alpha_3\left(\frac{\var{PPE}_{it}}{A_{i,t-1}}\right)
+  + \varepsilon_{it}
+\end{equation}
+
+Third, non-discretionary accruals are calculated with the estimated coefficients, after taking the change in receivables off the change in revenue:
+\begin{equation}
+  \var{NDA}_{it}
+  = \hat{\alpha}_1\left(\frac{1}{A_{i,t-1}}\right)
+  + \hat{\alpha}_2\left(\frac{\Delta\var{REV}_{it} - \Delta\var{REC}_{it}}{A_{i,t-1}}\right)
+  + \hat{\alpha}_3\left(\frac{\var{PPE}_{it}}{A_{i,t-1}}\right)
+\end{equation}
+
+Fourth, discretionary accruals are scaled total accruals minus non-discretionary accruals, and earnings management is their absolute value:
+\begin{equation}
+  \var{DA}_{it} = \frac{\var{TA}_{it}}{A_{i,t-1}} - \var{NDA}_{it},
+  \qquad
+  \var{EM}_{it} = \lvert \var{DA}_{it} \rvert
+\end{equation}
+
+Here NI is net income, CFO is operating cash flow, $A$ is total assets, REV is revenue, REC is receivables and PPE is gross property, plant and equipment.
+
+\textbf{Step 2: Regression models.} Model~1 is the main model and tests H1 to H3:
+\begin{equation}
+  \begin{split}
+    \var{EM}_{it} ={}& \beta_0 + \beta_1\var{TENURE}_{it} + \beta_2\var{FEE}_{it} + \beta_3\var{ACIND}_{it} \\
+    &+ \beta_4\var{SIZE}_{it} + \beta_5\var{LEV}_{it} + \beta_6\var{ROA}_{it} + \text{year effects} + \varepsilon_{it}
+  \end{split}
+\end{equation}
+
+Model~2 uses signed discretionary accruals instead of the absolute value, to see whether the results depend on the direction of the accruals:
+\begin{equation}
+  \begin{split}
+    \var{DA}_{it} ={}& \beta_0 + \beta_1\var{TENURE}_{it} + \beta_2\var{FEE}_{it} + \beta_3\var{ACIND}_{it} \\
+    &+ \beta_4\var{SIZE}_{it} + \beta_5\var{LEV}_{it} + \beta_6\var{ROA}_{it} + \text{year effects} + \varepsilon_{it}
+  \end{split}
+\end{equation}
+
+Model~3 lags the three audit variables by one year, so earnings management in the same year cannot be driving them. The first year of each company drops out as a result:
+\begin{equation}
+  \begin{split}
+    \var{EM}_{it} ={}& \beta_0 + \beta_1\var{TENURE}_{i,t-1} + \beta_2\var{FEE}_{i,t-1} + \beta_3\var{ACIND}_{i,t-1} \\
+    &+ \beta_4\var{SIZE}_{it} + \beta_5\var{LEV}_{it} + \beta_6\var{ROA}_{it} + \text{year effects} + \varepsilon_{it}
+  \end{split}
+\end{equation}
+
+As further robustness checks, Model~1 is re-estimated with outliers excluded instead of winsorised, and with total accruals taken from the balance sheet instead of the cash flow statement.
+
+\section{Reliability and Validity of the Data}
+
+The data is reliable because it comes from audited annual reports. These follow a common reporting framework and are reviewed by independent auditors. Each variable is also taken from the same report section for every company. A second group member re-checks a random sample of entries against the source reports. If an error is found, all the remaining entries for that company are re-checked.
+
+The measures are valid because they come from the prior literature. Earnings management is measured with the Modified Jones Model \parencite{dechow1995}. Audit tenure is the number of consecutive years of the audit firm, as in earlier Pakistani studies \parencite{kalabeke2019,malik2016}. Audit committee independence is the share of independent members on the committee \parencite{klein2002}. Estimating the model within one sector also reduces measurement error, because the companies have comparable accruals. The robustness checks in Section~\ref{sec:model-spec} test whether the conclusions depend on one measure or one specification.
+
+\section{Ethical Considerations}
+
+The study uses published audited annual reports and regulator documents. It has no data about individuals and no human participants, so no consent is needed. All sources are cited and the data is reported as collected. Large discretionary accruals are a statistical sign of possible earnings management, not proof of wrongdoing. The results are therefore reported for the sample as a whole, and no individual company is named as a manipulator.
+
+\section{Chapter Summary}
+
+The study uses a six-year panel of textile composite companies listed on PSX. Discretionary accruals are estimated with the Modified Jones Model, and the three hypotheses are tested with panel regressions. The regression type is chosen by specification tests, and standard errors are clustered by company. Chapter~4 reports the results.
