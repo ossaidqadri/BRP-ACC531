@@ -3,7 +3,18 @@
 
 \usepackage{amsmath}
 \usepackage{fontspec}
-\setmainfont{TeX Gyre Termes}
+% Filename-based: bypasses luaotfload font-name lookup (stale in portable MiKTeX)
+\setmainfont{texgyretermes}[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]
+
+% LuaTeX: longtable's internal \vss trips a spurious "Infinite glue shrinkage" warning
+% during page splits (LaTeX3 issue 1907, fix pending upstream); silence it.
+\ifcsname ignoreprimitiveerror\endcsname\ignoreprimitiveerror=1\fi
 
 \usepackage[a4paper,margin=2.54cm]{geometry}
 \usepackage{setspace}
