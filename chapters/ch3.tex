@@ -2,7 +2,7 @@
 
 \section{Research Design}
 
-The study is quantitative and explanatory in nature and is based on a positivist approach. It tests hypotheses relating to the relationships between the various measured variables using secondary data from audited annual reports. The data constitute a panel (the same companies are being observed over time) as we have data on up to 20 companies over a period of six fiscal years. The data are quantitative and secondary, drawn from the annual reports which are audited, and they form a panel over the six years.
+The study is quantitative and explanatory in nature and is based on a positivist approach. It tests hypotheses relating to the relationships between the various measured variables using secondary data from audited annual reports. The data constitute a panel (the same companies are being observed over time) as we have data on up to 20 companies over a period of six fiscal years. The data are quantitative and secondary, drawn from annual reports that are audited for each of the six fiscal years.
 
 \section{Population and Sampling Design}
 \label{sec:sampling}
@@ -15,7 +15,7 @@ A company will only be in the sample if it satisfies all of the following four r
 
 \begin{enumerate}[label=\arabic*.]
   \item It is one of the 20 largest ordinary share companies on the sector list.
-  \item It was a PSX listed company throughout 2020--2025. Interloop went public on 5 April 2019 (prior to the study period) (SCS trade company profile). % TODO: this source is not in the reference list.
+  \item It was a PSX listed company throughout 2020--2025. Interloop went public on 5 April 2019 (prior to the study period) \parencite{scstrade2026}. % TODO: open references.bib and paste the exact profile URL used when collecting this fact.
   \item It reported for a full financial year in each year.
   \item The audit fee, audit firm, audit committee make-up and the financial statement items required for the Modified Jones Model are all available in the relevant audited annual reports for each year, which are all publicly available.
 \end{enumerate}
@@ -37,7 +37,7 @@ If a company fails a rule during data collection, it is replaced by the next com
     Less: companies outside the 20 largest & 16 & --- \\
     Selected sample before data checks & 20 & 120 \\
     Replacements made after data checks & --- & --- \\
-    Final sample & --- & --- \\
+    Final sample (stays at 20 by rule~4) & 20 & 120 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -73,12 +73,12 @@ Audit committee independence is computed by matching the committee members named
   Earnings management & EM & Absolute value of DA & Computed from the financial statements & Dependent \\
   Discretionary accruals & DA & Residual from the Modified Jones Model, scaled by opening total assets & Computed from the financial statements & Dependent in robustness checks \\
   Total accruals & TA & Net income minus operating cash flow & Profit or loss account and cash flow statement & Used in Step~1 \\
-  Audit tenure & TENURE & Consecutive years the same audit firm has served the company & Auditor's report, traced back year by year & ? \\
-  Audit fees & FEE & Natural logarithm of the disclosed audit fee, using the statutory audit fee where the note separates it & Note on auditors' remuneration & ? \\
-  Audit committee independence & ACIND & Independent directors on the audit committee divided by total audit committee members & Statement of compliance and board committee section & $-$ \\
-  Firm size & SIZE & Natural logarithm of total assets & Statement of financial position & ? \\
-  Leverage & LEV & Total liabilities divided by total assets & Statement of financial position & ? \\
-  Return on assets & ROA & Net income divided by total assets & Profit or loss account and statement of financial position & ? \\
+  Audit tenure & TENURE & Consecutive years the same audit firm has served the company & Auditor's report, traced back year by year & $\pm$ (H1) \\
+  Audit fees & FEE & Natural logarithm of the disclosed audit fee, using the statutory audit fee where the note separates it & Note on auditors' remuneration & $\pm$ (H2) \\
+  Audit committee independence & ACIND & Independent directors on the audit committee divided by total audit committee members & Statement of compliance and board committee section & $-$ (H3) \\
+  Firm size & SIZE & Natural logarithm of total assets & Statement of financial position & Control \\
+  Leverage & LEV & Total liabilities divided by total assets & Statement of financial position & Control \\
+  Return on assets & ROA & Net income divided by total assets & Profit or loss account and statement of financial position & Control \\
 \end{longtable}
 \endgroup
 
