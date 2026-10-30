@@ -10,3 +10,13 @@
 *.fls
 *.fdb_latexmk
 main.pdf
+*.bak
+*.lof
+*.lot
+*.brf
+*.idx
+*.ind
+*.ilg
+*.loa
+*~
+Thumbs.db
