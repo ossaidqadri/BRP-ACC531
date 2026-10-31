@@ -1,4 +1,4 @@
-# BRP-Acc
+# BRP-ACC531
 
 BRP Acc Fall 2026 - Audit Quality and Earnings Management: Evidence from Textile Composite Companies Listed on the Pakistan Stock Exchange, 2020--2025.
 
