@@ -3,7 +3,7 @@
 BRP Acc Fall 2026 - Audit Quality and Earnings Management: Evidence from Textile Composite Companies Listed on the Pakistan Stock Exchange, 2020--2025.
 
 Course ACC531 - Department of Accounting and Finance, IoBM.
-Authors: Mustafa Aftab, Ossaid Qadri, Samiya Younus, Alina Shafqat, Airaaf Mehmood. Supervisor: Muhammad Asif.
+Authors: Mustafa Aftab, Ossaid Qadri, Samiya Younus, Alina Shafqat, Airaaf Mehmood. Supervisor: Dr. Asif Bloch.
 Researcher iD (Ossaid Qadri): https://orcid.org/0009-0000-1723-803X
 
 ## Contents
