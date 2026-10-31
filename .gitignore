@@ -19,5 +19,6 @@ main.pdf
 *.ilg
 *.loa
 *.docx
+AGENTS.md
 *~
 Thumbs.db
