@@ -17,6 +17,12 @@
 \ifcsname ignoreprimitiveerror\endcsname\ignoreprimitiveerror=1\fi
 
 \usepackage[a4paper,margin=2.54cm]{geometry}
+
+% Lone-float pages: standard classes vertically centre a float when it sits alone
+% on a page (Table A.2 looked like it dropped to mid/bottom of the page); pin to top.
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
 \usepackage{setspace}
 \onehalfspacing
 
