@@ -23,3 +23,6 @@ AGENTS.md
 *~
 Thumbs.db
 main-*.pdf
+
+# local docx build scripts (re-run after every .tex change)
+tools/docx/
