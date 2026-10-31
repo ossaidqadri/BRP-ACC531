@@ -18,5 +18,6 @@ main.pdf
 *.ind
 *.ilg
 *.loa
+*.docx
 *~
 Thumbs.db
